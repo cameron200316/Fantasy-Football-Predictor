@@ -1,20 +1,36 @@
 
-<html>
-<head>
-    <title>2026 Fantasy Football Projections</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; text-align: center;}
-        h1 { color: #333; }
-        h2 { color: #0056b3; margin-top: 40px; border-bottom: 2px solid #0056b3; padding-bottom: 10px; display: inline-block;}
-        table { margin: 0 auto; border-collapse: collapse; width: 60%; background-color: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        th, td { padding: 12px; text-align: center; border-bottom: 1px solid #ddd; }
-        th { background-color: #0056b3; color: white; }
-        img { border-radius: 50%; object-fit: cover; }
-    </style>
-</head>
-<body>
-    <h1>🏈 2026 Fantasy Football Projections (Tested on 2025 Data) 🏈</h1>
-<h2>Top 10 Projected QBs</h2>
+    <html>
+    <head>
+        <title>2026 Fantasy Football Projections</title>
+        <style>
+            body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; text-align: center;}
+            h1 { color: #333; }
+            h2 { color: #0056b3; margin-top: 40px; border-bottom: 2px solid #0056b3; padding-bottom: 10px; display: inline-block;}
+            table { margin: 0 auto; border-collapse: collapse; width: 60%; background-color: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-bottom: 40px; }
+            th, td { padding: 12px; text-align: center; border-bottom: 1px solid #ddd; }
+            th { background-color: #0056b3; color: white; }
+            img { border-radius: 50%; object-fit: cover; }
+            .feature-table th { background-color: #28a745; }
+            .feature-table { width: 40%; }
+            .info-box { background-color: white; width: 50%; margin: 0 auto 40px auto; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px; text-align: left;}
+            .info-box h3 { color: #d9534f; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+            .info-box span { font-weight: bold; color: #333; }
+        </style>
+    </head>
+    <body>
+        <h1>2026 Fantasy Football Projections</h1>
+        
+        <div class="info-box">
+            <h3>Model Performance (Tested on 2025 Data)</h3>
+            <p><span>Baseline Linear Regression MAE:</span> 2.44 Points Per Game off</p>
+            <p><span>Tuned Random Forest MAE:</span> 2.61 Points Per Game off</p>
+            
+            <h3 style="margin-top: 20px;">Chosen Random Forest Hyperparameters</h3>
+            <p><span>n_estimators:</span> 100 <i>(Number of trees in the forest)</i></p>
+            <p><span>max_depth:</span> 5 <i>(Maximum depth of the trees)</i></p>
+            <p><span>min_samples_split:</span> 2 <i>(Min samples required to split an internal node)</i></p>
+        </div>
+    <h2>Top 10 Projected QBs</h2>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -307,5 +323,69 @@
   </tbody>
 </table>
 
+        <h2>Model Feature Importances</h2>
+        <p>This shows which stats the algorithm relied on the most to generate predictions.</p>
+    <table border="1" class="dataframe feature-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Feature</th>
+      <th>Importance Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>prev_pts_per_game_ppr</td>
+      <td>89.39%</td>
+    </tr>
+    <tr>
+      <td>prev_age</td>
+      <td>2.14%</td>
+    </tr>
+    <tr>
+      <td>prev_games_played</td>
+      <td>1.84%</td>
+    </tr>
+    <tr>
+      <td>prev_tds_per_game</td>
+      <td>1.53%</td>
+    </tr>
+    <tr>
+      <td>prev_targets_per_game</td>
+      <td>1.32%</td>
+    </tr>
+    <tr>
+      <td>prev_avg_matchup_epa</td>
+      <td>1.09%</td>
+    </tr>
+    <tr>
+      <td>prev_yards_per_carry</td>
+      <td>0.85%</td>
+    </tr>
+    <tr>
+      <td>prev_carries_per_game</td>
+      <td>0.75%</td>
+    </tr>
+    <tr>
+      <td>prev_yards_per_target</td>
+      <td>0.7%</td>
+    </tr>
+    <tr>
+      <td>position_QB</td>
+      <td>0.35%</td>
+    </tr>
+    <tr>
+      <td>position_RB</td>
+      <td>0.02%</td>
+    </tr>
+    <tr>
+      <td>position_TE</td>
+      <td>0.01%</td>
+    </tr>
+    <tr>
+      <td>position_WR</td>
+      <td>0.0%</td>
+    </tr>
+  </tbody>
+</table>
 </body>
 </html>
